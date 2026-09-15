@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f6f4ed" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#171917" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;650&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Weekly Class Itinerary</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f4ed;
+      --paper: #fffdf8;
+      --ink: #18221f;
+      --muted: #52605b;
+      --line: #d8d9d0;
+      --teal: #087e72;
+      --teal-deep: #065d55;
+      --teal-soft: #d9f1ec;
+      --coral: #e95e43;
+      --coral-soft: #ffe3db;
+      --sun: #f1b731;
+      --sun-soft: #fff1c5;
+      --sky: #2e74a8;
+      --sky-soft: #dceef9;
+      --shadow: 0 18px 44px rgba(38, 46, 42, .10);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171917;
+        --paper: #202420;
+        --ink: #f3f2e9;
+        --muted: #bbc4bd;
+        --line: #3a413b;
+        --teal: #5fd3c5;
+        --teal-deep: #94e4da;
+        --teal-soft: #183f3a;
+        --coral: #ff8a72;
+        --coral-soft: #4e2821;
+        --sun: #f5ca60;
+        --sun-soft: #4b3c18;
+        --sky: #8dc8ef;
+        --sky-soft: #203c50;
+        --shadow: 0 20px 48px rgba(0, 0, 0, .30);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Source Sans 3", sans-serif;
+      font-size: 18px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    button { font: inherit; }
+    .page { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 72px; }
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 26px;
+    }
+    .hero, .class-card { background: var(--paper); border: 1px solid var(--line); }
+    .hero { padding: clamp(26px, 5vw, 52px); border-radius: 28px 10px 28px 28px; box-shadow: var(--shadow); }
+    h1, h2, h3 { font-family: "Fredoka", sans-serif; margin: 0; line-height: 1.05; letter-spacing: -.02em; }
+    h1 { font-size: clamp(2.5rem, 7vw, 5.15rem); max-width: 760px; }
+    .hero p { margin: 22px 0 0; max-width: 620px; color: var(--muted); font-size: 1.15rem; }
+    .accent { color: var(--teal-deep); }
+    .class-card {
+      padding: 26px;
+      border-radius: 10px 28px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .class-card .label, .section-label { color: var(--coral); font-weight: 700; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; }
+    .class-card strong { font-family: "Fredoka", sans-serif; display: block; font-size: 1.65rem; line-height: 1.15; margin-top: 8px; }
+    .facts { display: grid; gap: 13px; }
+    .fact { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: center; color: var(--muted); }
+    .fact svg { width: 24px; height: 24px; color: var(--teal); }
+    .view-switch { display: flex; gap: 6px; padding: 5px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; width: fit-content; margin: 0 0 22px auto; }
+    .view-switch button { color: var(--muted); background: transparent; border: 0; border-radius: 9px; padding: 8px 14px; cursor: pointer; font-weight: 650; }
+    .view-switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+    .block {
+      --block: var(--teal);
+      --block-soft: var(--teal-soft);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 6px solid var(--block);
+      border-radius: 8px 8px 20px 20px;
+      padding: 22px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      grid-column: span 4;
+    }
+    .block:nth-child(1), .block:nth-child(2), .block:nth-child(5) { grid-column: span 3; }
+    .block:nth-child(3) { grid-column: span 6; }
+    .block:nth-child(4) { grid-column: span 9; }
+    .block.welcome { --block: var(--coral); --block-soft: var(--coral-soft); }
+    .block.warmup { --block: var(--sun); --block-soft: var(--sun-soft); }
+    .block.build { --block: var(--teal); --block-soft: var(--teal-soft); }
+    .block.pitch { --block: var(--sky); --block-soft: var(--sky-soft); }
+    .block.close { --block: var(--coral); --block-soft: var(--coral-soft); }
+    .time { color: var(--block); font-weight: 800; font-size: .88rem; margin-bottom: 12px; }
+    .block h2 { font-size: 1.55rem; margin-bottom: 10px; }
+    .duration { align-self: flex-start; margin-top: auto; padding: 5px 10px; border-radius: 999px; background: var(--block-soft); color: var(--ink); font-weight: 700; font-size: .8rem; }
+    .block p { color: var(--muted); margin: 0 0 14px; }
+    .beats { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+    .beats li { position: relative; padding-left: 19px; }
+    .beats li::before { content: ""; position: absolute; left: 1px; top: .67em; width: 7px; height: 7px; border-radius: 50%; background: var(--block); }
+    .coach-note { margin-top: 16px; padding: 12px 14px; background: var(--block-soft); border-radius: 4px 14px 14px 14px; font-size: .93rem; }
+    .coach-note b { color: var(--ink); }
+    .pledge-panel {
+      display: grid;
+      grid-template-columns: minmax(220px, .62fr) minmax(0, 1.38fr);
+      gap: clamp(24px, 5vw, 56px);
+      background: var(--coral-soft);
+      border: 1px solid var(--line);
+      border-radius: 26px 8px 26px 26px;
+      padding: clamp(26px, 5vw, 48px);
+      margin: 0 0 36px;
+    }
+    .pledge-intro h2 { font-size: clamp(2rem, 5vw, 3.35rem); margin: 7px 0 16px; }
+    .pledge-intro p { margin: 0; color: var(--muted); }
+    .pledge-call {
+      margin-top: 22px;
+      padding: 16px 18px;
+      background: var(--paper);
+      border-radius: 5px 16px 16px 16px;
+      font-weight: 700;
+    }
+    .pledge-lines { display: grid; gap: 7px; font-family: "Fredoka", sans-serif; font-size: clamp(1.08rem, 2vw, 1.32rem); line-height: 1.28; }
+    .pledge-lines p { margin: 0; }
+    .pledge-lines .stage { color: var(--muted); font-family: "Source Sans 3", sans-serif; font-size: .86em; font-weight: 600; }
+    .pledge-finish { margin-top: 24px; padding-top: 20px; border-top: 2px solid color-mix(in srgb, var(--coral) 38%, transparent); font-weight: 700; }
+    .pledge-notes { grid-column: 1 / -1; margin: 0; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--coral) 30%, transparent); color: var(--muted); }
+    .way {
+      background: var(--teal-deep);
+      color: #fff;
+      border-radius: 30px 12px 30px 12px;
+      padding: clamp(28px, 5vw, 48px);
+      margin: 36px 0;
+    }
+    @media (prefers-color-scheme: dark) { .way { background: #124a43; } }
+    .way-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .6fr); gap: 28px; align-items: end; margin-bottom: 30px; }
+    .way h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    .way-head p { margin: 0; color: #dcf3ed; }
+    .rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; background: rgba(255,255,255,.18); border: 2px solid rgba(255,255,255,.18); }
+    .rule { background: var(--teal-deep); padding: 22px; }
+    @media (prefers-color-scheme: dark) { .rule { background: #124a43; } }
+    .rule:first-child { border-radius: 16px 0 0 0; }
+    .rule:nth-child(2) { border-radius: 0 16px 0 0; }
+    .rule:nth-last-child(2) { border-radius: 0 0 0 16px; }
+    .rule:last-child { border-radius: 0 0 16px 0; }
+    .rule .num { font-family: "Fredoka", sans-serif; color: #8de8db; font-size: .85rem; }
+    .rule h3 { font-size: 1.3rem; margin: 5px 0 7px; }
+    .rule p { color: #dcf3ed; margin: 0; font-size: .96rem; }
+    .toolkit { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .panel { background: var(--paper); border: 1px solid var(--line); padding: 28px; }
+    .panel:first-child { border-radius: 22px 6px 22px 22px; }
+    .panel:last-child { border-radius: 6px 22px 22px 22px; }
+    .panel h2 { font-size: 1.75rem; margin: 7px 0 18px; }
+    .progress-panel { grid-column: 1 / -1; border-radius: 22px 8px 22px 22px !important; }
+    .progress-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; background: var(--line); }
+    .progress-step { background: var(--paper); padding: 20px; }
+    .progress-step h3 { font-size: 1.2rem; margin-bottom: 7px; }
+    .progress-step p { margin: 0; color: var(--muted); }
+    .rotation { display: grid; gap: 0; }
+    .rotation-row { display: grid; grid-template-columns: 82px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid var(--line); }
+    .rotation-row b { color: var(--teal-deep); }
+    .rotation-row p { margin: 0; color: var(--muted); }
+    .script-list { display: grid; gap: 13px; }
+    .script { border-left: 4px solid var(--coral); padding: 7px 0 7px 15px; }
+    .script b { display: block; font-size: .85rem; color: var(--muted); }
+    .script span { display: block; margin-top: 3px; font-weight: 600; }
+    .ready-strip { margin-top: 20px; padding: 22px 24px; border: 1px dashed var(--line); border-radius: 15px; display: flex; align-items: flex-start; gap: 16px; }
+    .ready-strip svg { width: 30px; flex: 0 0 30px; color: var(--sun); }
+    .ready-strip p { margin: 3px 0 0; color: var(--muted); }
+    footer { color: var(--muted); text-align: center; padding-top: 38px; font-size: .92rem; }
+    .quick .detail { display: none; }
+    .quick .block { min-height: 180px; }
+    .quick .timeline { margin-bottom: 12px; }
+    @media (max-width: 820px) {
+      .intro { grid-template-columns: 1fr; }
+      .hero { border-radius: 24px 8px 24px 24px; }
+      .class-card { border-radius: 8px 24px 24px 24px; }
+      .timeline { grid-template-columns: 1fr; }
+      .block, .block:nth-child(n) { grid-column: 1; min-height: 0; }
+      .duration { margin-top: 8px; }
+      .way-head, .toolkit, .progress-grid, .pledge-panel { grid-template-columns: 1fr; }
+      .pledge-notes { grid-column: 1; }
+    }
+    @media (max-width: 560px) {
+      body { font-size: 17px; }
+      .page { width: min(100% - 22px, 1080px); padding-top: 12px; }
+      .hero, .class-card, .panel { padding: 22px; }
+      .view-switch { width: 100%; margin: 0 0 16px; }
+      .view-switch button { flex: 1; }
+      .rules { grid-template-columns: 1fr; }
+      .rule, .rule:first-child, .rule:nth-child(2), .rule:nth-last-child(2), .rule:last-child { grid-column: auto; border-radius: 0; }
+      .rule:first-child { border-radius: 14px 14px 0 0; }
+      .rule:last-child { border-radius: 0 0 14px 14px; }
+      .rotation-row { grid-template-columns: 70px 1fr; }
+    }
+    @media print {
+      body { background: #fff; color: #111; font-size: 12px; }
+      .page { width: 100%; padding: 0; }
+      .view-switch, footer, .toolkit { display: none; }
+      .intro { grid-template-columns: 1.6fr 1fr; margin-bottom: 12px; }
+      .hero, .class-card, .block { box-shadow: none; }
+      h1 { font-size: 32px; }
+      .hero, .class-card { padding: 18px; }
+      .timeline { grid-template-columns: repeat(12, 1fr); gap: 7px; margin-bottom: 12px; }
+      .block { min-height: 0; padding: 12px; break-inside: avoid; }
+      .block:nth-child(1), .block:nth-child(2), .block:nth-child(5) { grid-column: span 3; }
+      .block:nth-child(3) { grid-column: span 6; }
+      .block:nth-child(4) { grid-column: span 9; }
+      .way { padding: 20px; margin: 14px 0 0; color: #fff; }
+      .way-head { margin-bottom: 12px; }
+      .rule { padding: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <main class="page" id="page">
+    <section class="intro" aria-labelledby="main-title">
+      <div class="hero">
+        <h1 id="main-title">60 minutes. Every kid <span class="accent">builds.</span> Every kid <span class="accent">speaks.</span></h1>
+        <p>The permanent class rhythm: themes rotate, the structure stays familiar, and a kid joining in any week fits right in.</p>
+      </div>
+      <aside class="class-card" aria-label="Class details">
+        <div>
+          <span class="label">Evergreen weekly class</span>
+          <strong>Problem Solving &amp;<br>Public Speaking</strong>
+        </div>
+        <div class="facts">
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Tuesdays · 6:00–7:00 PM</span>
+          </div>
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <span>1740 Grassland Pkwy<br>Alpharetta</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <nav class="view-switch" aria-label="Page view">
+      <button type="button" id="fullBtn" aria-pressed="true">Full guide</button>
+      <button type="button" id="quickBtn" aria-pressed="false">Quick run-sheet</button>
+    </nav>
+
+    <section class="timeline" aria-label="60-minute class itinerary">
+      <article class="block welcome">
+        <div class="time">6:00–6:05</div>
+        <h2>Welcome circle</h2>
+        <p>Name + one brave answer. No catching up required.</p>
+        <div class="detail">
+          <ul class="beats">
+            <li>Coach models first</li>
+            <li>Welcome new kids into the same simple rhythm</li>
+            <li>Celebrate bold <em>and</em> quiet</li>
+          </ul>
+          <div class="coach-note"><b>Try:</b> “What’s one tiny problem you wish you could fix?”</div>
+        </div>
+        <span class="duration">5 min</span>
+      </article>
+
+      <article class="block warmup">
+        <div class="time">6:05–6:15</div>
+        <h2>Speaking game</h2>
+        <p>A fast, playful warm-up that rotates weekly.</p>
+        <div class="detail">
+          <ul class="beats">
+            <li>Lower the pressure</li>
+            <li>Make the room laugh</li>
+            <li>Get every voice heard early</li>
+          </ul>
+          <div class="coach-note"><b>Rule:</b> Silly is brave. The coach goes biggest first.</div>
+        </div>
+        <span class="duration">10 min</span>
+      </article>
+
+      <article class="block build">
+        <div class="time">6:15–6:40</div>
+        <h2>Build block</h2>
+        <p>Kids make a fix, model, or prototype—then name it like a real product.</p>
+        <div class="detail">
+          <ul class="beats">
+            <li><b>Spot it:</b> What problem are you solving?</li>
+            <li><b>Make it:</b> Use the craft supplies; imperfect is fine</li>
+            <li><b>Name it:</b> Give the invention a memorable product name</li>
+          </ul>
+          <div class="coach-note"><b>Coach job:</b> Ask questions. Don’t take over the build.</div>
+        </div>
+        <span class="duration">25 min</span>
+      </article>
+
+      <article class="block pitch">
+        <div class="time">6:40–6:55</div>
+        <h2>Pitch + next-week spark</h2>
+        <p>Every kid pitches, then leaves with a reason to look forward to next Tuesday.</p>
+        <div class="detail">
+          <ul class="beats">
+            <li><b>The pitch:</b> Problem → invention → why it’s awesome</li>
+            <li><b>The response:</b> Room claps + one specific compliment</li>
+            <li><b>The spark:</b> Reveal one clue or let kids vote between two themes</li>
+          </ul>
+          <div class="coach-note"><b>Once a month:</b> Invite parents into the final 10 minutes to watch the live pitches and stay for the pledge.</div>
+        </div>
+        <span class="duration">15 min</span>
+      </article>
+
+      <article class="block close">
+        <div class="time">6:55–7:00</div>
+        <h2>Brave moment + pledge</h2>
+        <p>The final five minutes. Never skipped.</p>
+        <div class="detail">
+          <ul class="beats">
+            <li>Roll call: “My brave moment was…”</li>
+            <li>Stamp or mark each take-home confidence card</li>
+            <li>Flow straight into the class pledge</li>
+          </ul>
+          <div class="coach-note"><b>Pledge:</b> Name the Pledge Captain, plant feet, and lead the full GPS Kids Pledge below.</div>
+        </div>
+        <span class="duration">5 min</span>
+      </article>
+    </section>
+
+    <section class="pledge-panel detail" aria-labelledby="pledge-title">
+      <div class="pledge-intro">
+        <span class="section-label">Closing ritual · 5 minutes</span>
+        <h2 id="pledge-title">THE GPS KIDS PLEDGE —</h2>
+        <p>Feet planted, voices loud. The kid with the bravest moment that night becomes Pledge Captain and leads it.</p>
+        <div class="pledge-call">Pledge Captain: "WHO ARE WE?!" / Everyone: "GPS KIDS!"</div>
+      </div>
+      <div>
+        <div class="pledge-lines" aria-label="GPS Kids pledge lines">
+          <p>I AM A LEADER. <span class="stage">(hand on heart)</span></p>
+          <p>I AM A SAVAGE. <span class="stage">(flex!)</span></p>
+          <p>I LEAD, NOT FOLLOW.</p>
+          <p>I BELIEVE, NOT DOUBT.</p>
+          <p>I CREATE, NOT DESTROY.</p>
+          <p>I SPEAK WITH POWER. <span class="stage">(mic-drop motion)</span></p>
+          <p>I SOLVE WITH PURPOSE.</p>
+          <p>I RISE. <span class="stage">(up on your toes)</span></p>
+          <p>I LEAD.</p>
+          <p>I INSPIRE.</p>
+          <p>I AM GPS —</p>
+          <p>THE GREATEST PUBLIC SPEAKER.</p>
+          <p>THE GREATEST PROBLEM SOLVER.</p>
+          <p>NO EXCUSES. <span class="stage">(stomp)</span></p>
+          <p>NO LIMITS. <span class="stage">(arms wide)</span></p>
+          <p>I AM OUTSTANDING.</p>
+        </div>
+        <p class="pledge-finish">Louder every line: STEP UP. <span class="stage">(clap)</span> / STEP UP. <span class="stage">(clap clap)</span> / STEP UP! <span class="stage">(jump + clap)</span> / LET'S GOOO!</p>
+      </div>
+      <p class="pledge-notes"><strong>Coach notes:</strong> week one the coach leads and kids echo — by week three a kid runs it. Golden rule: "If the walls don't shake a little, we do it again."</p>
+    </section>
+
+    <section class="way" aria-labelledby="way-title">
+      <div class="way-head">
+        <div>
+          <span class="section-label" style="color:#8de8db">The GPS Kids Way</span>
+          <h2 id="way-title">Protect the vibe.</h2>
+        </div>
+        <p>Any coach or helper can run the plan. These six rules keep the room safe, playful, and brave.</p>
+      </div>
+      <div class="rules">
+        <article class="rule"><span class="num">01</span><h3>Silly is brave.</h3><p>Play is not a distraction—it’s how kids loosen up enough to try.</p></article>
+        <article class="rule"><span class="num">02</span><h3>Every kid pitches. Every week.</h3><p>A whisper-pitch counts. Standing beside the coach counts. Never skip a kid.</p></article>
+        <article class="rule"><span class="num">03</span><h3>Compliments get specific.</h3><p>Replace “good job” with what you noticed: the strong opening, clear voice, funny name, or useful idea.</p></article>
+        <article class="rule"><span class="num">04</span><h3>A freeze means the brain is working.</h3><p>No rescuing or rushing. Give them any word to start, then let the next word come.</p></article>
+        <article class="rule"><span class="num">05</span><h3>Energy comes from the coach first.</h3><p>Model the answer. Be willing to look silly. Clap like it matters—because the room follows you.</p></article>
+        <article class="rule"><span class="num">06</span><h3>The pledge is never skipped.</h3><p>Whatever else changes, protect the final five minutes: brave-moment roll call, confidence-card mark, then the pledge.</p></article>
+      </div>
+    </section>
+
+    <section class="toolkit detail" aria-label="Weekly coach toolkit">
+      <article class="panel">
+        <span class="section-label">Keep it fresh</span>
+        <h2>Pick a warm-up</h2>
+        <div class="rotation">
+          <div class="rotation-row"><b>Story</b><p><strong>One-Word Story</strong><br>Build a silly story, one word per person.</p></div>
+          <div class="rotation-row"><b>Pitch</b><p><strong>Sell This</strong><br>Pitch a random classroom object in 20 seconds.</p></div>
+          <div class="rotation-row"><b>Twist</b><p><strong>Fortunately / Unfortunately</strong><br>Take turns making a story better, then worse.</p></div>
+          <div class="rotation-row"><b>Expert</b><p><strong>Expert for a Minute</strong><br>Teach the room about any topic you love.</p></div>
+        </div>
+      </article>
+      <article class="panel">
+        <span class="section-label">Words that work</span>
+        <h2>Coach rescue lines</h2>
+        <div class="script-list">
+          <div class="script"><b>WHEN A KID FREEZES</b><span>“Your brain is working. Start with any word—I’ll wait.”</span></div>
+          <div class="script"><b>WHEN A BUILD FEELS “WRONG”</b><span>“Prototypes aren’t perfect. Show me what it’s trying to do.”</span></div>
+          <div class="script"><b>WHEN A VOICE IS QUIET</b><span>“I can come closer. Your idea still deserves the room.”</span></div>
+          <div class="script"><b>WHEN ENERGY DROPS</b><span>“Everybody up. Shake it out. Ten-second invention celebration!”</span></div>
+        </div>
+        <div class="ready-strip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V5a3 3 0 0 1 6 0v3"/></svg>
+          <div><strong>Keep the build bin ready</strong><p>Cardboard, paper cups, tape, craft sticks, pipe cleaners, markers, scissors, string, foil, and recycled odds and ends.</p></div>
+        </div>
+      </article>
+      <article class="panel progress-panel">
+        <span class="section-label">Confidence parents can see</span>
+        <h2>Make every brave rep visible</h2>
+        <div class="progress-grid">
+          <div class="progress-step"><h3>Every class</h3><p>During brave-moment roll call, stamp or mark one moment on each kid’s take-home confidence card. Write a few real words when useful: “strong opening,” “tried again,” or “clear voice.”</p></div>
+          <div class="progress-step"><h3>Once a month</h3><p>Invite parents into the last 10 minutes. They watch the pitches live, hear the next-theme tease, and join the applause before the class closes together with the pledge.</p></div>
+        </div>
+      </article>
+    </section>
+
+    <footer>Same 60-minute rhythm. New theme, one more brave rep, and a reason to come back.</footer>
+  </main>
+  <script>
+    const page = document.getElementById('page');
+    const fullBtn = document.getElementById('fullBtn');
+    const quickBtn = document.getElementById('quickBtn');
+    function setView(quick) {
+      page.classList.toggle('quick', quick);
+      quickBtn.setAttribute('aria-pressed', String(quick));
+      fullBtn.setAttribute('aria-pressed', String(!quick));
+    }
+    fullBtn.addEventListener('click', () => setView(false));
+    quickBtn.addEventListener('click', () => setView(true));
+  </script>
+</body>
+</html>
