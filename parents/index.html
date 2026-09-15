@@ -332,21 +332,36 @@
       color: #fff;
       border-radius: 24px;
     }
+    .community[hidden] { display: none; }
     .community h2 { margin: 0 0 8px; font-size: clamp(1.65rem, 4vw, 2.35rem); }
     .community p { margin: 0; max-width: 52ch; color: #e9f6ff; }
     .community small { display: block; margin-top: 10px; color: #c9e6f6; }
+    .share-love {
+      background: var(--coral);
+    }
+    .share-love p { color: #fff6f2; }
+    .share-status {
+      min-height: 1.4em;
+      margin-top: 10px;
+      color: #fff6f2;
+      font-size: .86rem;
+      font-weight: 700;
+    }
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 50px;
       padding: 13px 19px;
+      border: 0;
       background: #fff;
       color: #164e78;
       border-radius: 12px;
+      font: inherit;
       font-weight: 800;
       text-decoration: none;
       white-space: nowrap;
+      cursor: pointer;
       box-shadow: 0 8px 0 rgba(0, 0, 0, .18);
       transition: transform .18s ease, box-shadow .18s ease;
     }
@@ -430,13 +445,22 @@
         </blockquote>
       </section>
 
-      <section class="community" aria-labelledby="community-title">
+      <section class="community" id="community-invite" aria-labelledby="community-title">
         <div>
           <h2 id="community-title">Get one game every week</h2>
           <p>Join the free GPS Kids parents’ WhatsApp community for simple, 5-minute ways to help your kid speak up.</p>
           <small>Announcements only. Message Bobby directly anytime.</small>
         </div>
         <a class="button" href="https://chat.joingpskids.com" target="_blank" rel="noopener noreferrer">Join the free community →</a>
+      </section>
+
+      <section class="community share-love" id="share-love" aria-labelledby="share-title" hidden>
+        <div>
+          <h2 id="share-title">Know a parent who’d love this?</h2>
+          <p>You’re already in the club — forward this page to one parent friend whose kid would light up playing this game.</p>
+          <div class="share-status" id="share-status" role="status" aria-live="polite"></div>
+        </div>
+        <button class="button" id="share-button" type="button">Share with a parent →</button>
       </section>
 
       <section class="class-recap" aria-labelledby="class-title">
@@ -454,5 +478,56 @@
       <strong>— Bobby</strong>
     </footer>
   </div>
+
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("from") !== "community") return;
+
+      const invite = document.getElementById("community-invite");
+      const shareLove = document.getElementById("share-love");
+      const shareButton = document.getElementById("share-button");
+      const shareStatus = document.getElementById("share-status");
+      const shareUrl = "https://club.joingpskids.com/parents/";
+
+      invite.hidden = true;
+      shareLove.hidden = false;
+
+      const copyLink = async () => {
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+        } catch (error) {
+          const textArea = document.createElement("textarea");
+          textArea.value = shareUrl;
+          textArea.setAttribute("readonly", "");
+          textArea.style.position = "fixed";
+          textArea.style.opacity = "0";
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand("copy");
+          textArea.remove();
+        }
+        shareStatus.textContent = "Page link copied — ready to send.";
+        shareButton.textContent = "Link copied ✓";
+      };
+
+      shareButton.addEventListener("click", async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: "A 5-Minute Speaking Game for Every Family",
+              text: "Try this playful 5-minute speaking game with your kid tonight.",
+              url: shareUrl
+            });
+            shareStatus.textContent = "Thanks for sharing the game.";
+            return;
+          } catch (error) {
+            if (error.name === "AbortError") return;
+          }
+        }
+        await copyLink();
+      });
+    })();
+  </script>
 </body>
 </html>
