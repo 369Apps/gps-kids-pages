@@ -141,7 +141,7 @@
       width: 100%; height: 100%; object-fit: cover; display: block;
     }
     .hero-art::after {
-      content: "Build it. Name it. Pitch it.";
+      content: "Hook it. Demo it. Sell it.";
       position: absolute;
       left: 18px; right: 18px; bottom: 18px;
       padding: 14px 16px;
@@ -344,6 +344,33 @@
     .copy-btn { background: var(--ink); color: var(--paper); white-space: nowrap; }
     .copy-btn.done { background: var(--green); color: var(--surface); }
 
+    .feedback-section {
+      margin-top: 24px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px 6px 20px 6px;
+    }
+    .feedback-section h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+    .feedback-section p { margin: 10px 0 20px; color: var(--muted); }
+    .kid-links { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    .kid-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60px;
+      padding: 14px 12px;
+      border-radius: 8px;
+      background: var(--blue);
+      color: var(--surface);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      transition: background .18s ease;
+    }
+    .kid-link:hover, .kid-link:focus-visible { background: var(--green); outline: 3px solid var(--yellow); outline-offset: 2px; }
+
     .after { margin-top: 18px; padding: 18px 22px; color: var(--muted); font-size: .86rem; text-align: center; }
 
     @media (max-width: 820px) {
@@ -359,6 +386,7 @@
       .pitch-card .big { text-align: left; }
       .pickup { grid-template-columns: 1fr; }
       .copy-btn { justify-self: start; }
+      .kid-links { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 560px) {
@@ -380,6 +408,8 @@
       .pitch-steps { grid-template-columns: 1fr; }
       .support-grid { grid-template-columns: 1fr; }
       .pickup { padding: 24px 20px; }
+      .feedback-section { padding: 24px 20px; }
+      .kid-links { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -405,15 +435,15 @@
       <div class="hero-copy">
         <div>
           <div class="meta">
-            <span class="chip"><span class="dot"></span> Tuesday, Sep 15</span>
+            <span class="chip"><span class="dot"></span> Thursday, Sep 17</span>
             <span class="chip">6:00–7:00 PM</span>
-            <span class="chip location">1740 Grassland Pkwy · Alpharetta</span>
+            <span class="chip location">GPS Kids Inperson · 1740 Grassland Pkwy, Alpharetta</span>
           </div>
-          <h1 id="main-title">Fix-It<br>Inventions</h1>
-          <p class="theme-line">Kids spot an everyday annoyance, <strong>build a quick fix</strong>, then pitch it in 60 seconds.</p>
+          <h1 id="main-title">Sell It</h1>
+          <p class="theme-line">Last class, the kids invented a fix for an everyday annoyance. <strong>Tonight, they sell it.</strong></p>
         </div>
         <div class="hero-note">
-          <div><b>Tonight’s loop:</b> Kids learn “One-Word Story” in class, then go home as the expert and teach it at dinner—the same game parents received in WhatsApp.</div>
+          <div><b>Week 2 mission:</b> Each kid creates and performs a 60-second commercial for their invention, or a brand-new silly product if they prefer.</div>
         </div>
       </div>
       <div class="hero-art">
@@ -422,10 +452,10 @@
     </section>
 
     <div class="quickbar" aria-label="Class plan summary">
+      <div><span>Week</span><b>Week 2 · Sell It</b></div>
       <div><span>Length</span><b>60 minutes</b></div>
-      <div><span>Outcome</span><b>Every kid pitches</b></div>
+      <div><span>Outcome</span><b>Every kid performs</b></div>
       <div><span>Coach rule</span><b>Silly is brave</b></div>
-      <div><span>Home mission</span><b>Teach the family</b></div>
     </div>
 
     <section aria-labelledby="run-title">
@@ -437,58 +467,60 @@
       <div class="timeline">
         <button class="phase" type="button" aria-expanded="false" data-minutes="5" data-label="Welcome circle">
           <span class="phase-time">6:00</span>
-          <span><h3>Welcome circle</h3><p>Name the annoyance. Don’t fix it yet.</p></span>
+          <span><h3>Welcome circle</h3><p>Name plus one thing they would love to sell.</p></span>
           <span class="duration">5 min</span>
           <span class="phase-detail">
-            Each kid says their first name and finishes: <strong>“One thing that annoys me at home or school is…”</strong>
-            <div class="say">“One rule here: silly is brave. If it feels a little scary to say it out loud, that means it counts double. Who’s ready?”</div>
+            Go around the circle. Each kid says their first name and finishes: <strong>“One thing I would love to sell is…”</strong>
+            <div class="say">“Tonight, you are not just inventors. You are the people who make everyone want the product.”</div>
           </span>
         </button>
 
-        <button class="phase" type="button" aria-expanded="false" data-minutes="10" data-label="One-Word Story">
+        <button class="phase" type="button" aria-expanded="false" data-minutes="10" data-label="Sell me anything">
           <span class="phase-time">6:05</span>
-          <span><h3>Warm-up · One-Word Story</h3><p>Two rounds around the circle; make round two fast.</p></span>
+          <span><h3>Warm-up · Sell me anything</h3><p>Random object. Ten seconds. Make us want it.</p></span>
           <span class="duration">10 min</span>
           <span class="phase-detail">
             <ul>
-              <li>Start with <strong>“Yesterday…”</strong> and build one word at a time.</li>
-              <li>First round: let it get weird. Second round: no thinking, just say the word.</li>
-              <li>If someone freezes: <strong>“Freeze means your brain is working. Say ANY word—wrong words make the best stories.”</strong></li>
+              <li>Hold up a random object.</li>
+              <li>Each kid gets 10 seconds to pitch it.</li>
+              <li>Keep it moving. Silly is brave.</li>
+              <li>Try two rounds if time allows.</li>
             </ul>
-            <div class="say">“Your parents got this game this morning. Tonight YOU learn it first—then you teach them at dinner.”</div>
+            <div class="say">“There is no wrong pitch. Make it useful, funny, magical, or totally weird. You have 10 seconds. Sell me anything!”</div>
           </span>
         </button>
 
-        <button class="phase" type="button" aria-expanded="false" data-minutes="25" data-label="Fix-It build block">
+        <button class="phase" type="button" aria-expanded="false" data-minutes="25" data-label="Build the commercial">
           <span class="phase-time">6:15</span>
-          <span><h3>Build block · Fix-It Invention</h3><p>Commit, build, name it.</p></span>
+          <span><h3>Build block · Write the commercial</h3><p>Hook the problem. Demo the product. Close with a catchphrase.</p></span>
           <span class="duration">25 min</span>
           <span class="phase-detail">
             <ul>
-              <li><strong>6:15–6:17:</strong> Each kid announces the problem and invention name.</li>
-              <li><strong>6:17–6:35:</strong> Draw it, build it, or both. Ask “What’s the hardest part?” instead of “Need help?”</li>
-              <li><strong>6:35–6:40:</strong> Five-minute warning. Finish touches and put the name on a sticky note.</li>
+              <li><strong>10 seconds:</strong> Hook the problem. What is annoying or hard?</li>
+              <li><strong>30 seconds:</strong> Demo the product. Show what it does and why it helps.</li>
+              <li><strong>20 seconds:</strong> Close with a catchphrase people will remember.</li>
+              <li>Make a quick poster or prop to use during the commercial.</li>
             </ul>
-            <div class="say">“Pick ONE annoying problem. You have 20 minutes to build the fix. Then name it like a real product.”</div>
+            <div class="say">“Use last class’s invention, or create a brand-new silly product. Your job is to make the room want it.”</div>
           </span>
         </button>
 
-        <button class="phase" type="button" aria-expanded="false" data-minutes="15" data-label="60-second pitches">
+        <button class="phase" type="button" aria-expanded="false" data-minutes="15" data-label="Commercial performances">
           <span class="phase-time">6:40</span>
-          <span><h3>Pitch block · The brave mic</h3><p>Problem → invention → why it’s awesome.</p></span>
+          <span><h3>Commercial performances · The brave mic</h3><p>Every kid performs a 60-second commercial.</p></span>
           <span class="duration">15 min</span>
           <span class="phase-detail">
-            Every kid pitches for up to 60 seconds. After each one: room claps, then one specific compliment from another kid. Model the first compliment. If a kid won’t go, offer a private whisper-pitch while the group “build-claps.” Never skip the rep entirely.
+            Every kid performs. After each commercial, the room claps and one kid gives a specific compliment. Model the first compliment: <strong>“I liked how you…”</strong> If someone freezes, help with the first line, then let them finish the rep.
           </span>
         </button>
 
-        <button class="phase" type="button" aria-expanded="false" data-minutes="5" data-label="Pledge ritual">
+        <button class="phase" type="button" aria-expanded="false" data-minutes="5" data-label="Brave moment and pledge">
           <span class="phase-time">6:55</span>
-          <span><h3>Close · Pledge ritual</h3><p>Brave-moment roll call flows straight into the class pledge.</p></span>
+          <span><h3>Close · Brave moment and pledge</h3><p>Name the brave moments, choose a Pledge Captain, then finish loud.</p></span>
           <span class="duration">5 min</span>
           <span class="phase-detail">
             <div class="pledge">
-              <p class="pledge-title"><strong>THE GPS KIDS PLEDGE</strong> — Feet planted, voices loud. The kid with the bravest moment tonight becomes Pledge Captain and leads it.</p>
+              <p class="pledge-title"><strong>THE GPS KIDS PLEDGE</strong>. Feet planted, voices loud. The kid with the bravest moment tonight becomes Pledge Captain and leads it.</p>
 
               <p class="pledge-call">Pledge Captain: &quot;WHO ARE WE?!&quot; / Everyone: &quot;GPS KIDS!&quot;</p>
 
@@ -503,7 +535,7 @@
                 I RISE. <span class="pledge-stage">(up on your toes)</span><br>
                 I LEAD.<br>
                 I INSPIRE.<br>
-                I AM GPS —<br>
+                I AM GPS.<br>
                 THE GREATEST PUBLIC SPEAKER.<br>
                 THE GREATEST PROBLEM SOLVER.<br>
                 NO EXCUSES. <span class="pledge-stage">(stomp)</span><br>
@@ -513,7 +545,7 @@
 
               <p class="pledge-finish">Louder every line: STEP UP. <span class="pledge-stage">(clap)</span> / STEP UP. <span class="pledge-stage">(clap clap)</span> / STEP UP! <span class="pledge-stage">(jump + clap)</span> / LET'S GOOO!</p>
 
-              <p class="pledge-notes"><strong>Coach notes:</strong> tonight the coach leads and kids echo. Golden rule: &quot;If the walls don't shake a little, we do it again.&quot;</p>
+              <p class="pledge-notes"><strong>Coach notes:</strong> the Pledge Captain leads and everyone echoes. Golden rule: &quot;If the walls don't shake a little, we do it again.&quot;</p>
             </div>
           </span>
         </button>
@@ -524,11 +556,9 @@
       <div class="panel">
         <h3>Grab before 6:00</h3>
         <ul class="materials">
-          <li>Paper</li><li>Markers or crayons</li>
-          <li>Tape</li><li>Scissors</li>
-          <li>Pipe cleaners</li><li>Paper cups</li>
-          <li>Rubber bands</li><li>Sticky notes</li>
-          <li>Phone timer</li><li>Wooden spoon “mic”</li>
+          <li>Paper</li><li>Markers</li>
+          <li>Tape</li><li>Timer on phone</li>
+          <li>The brave mic</li><li>Yesterday’s inventions, if kids bring them</li>
         </ul>
       </div>
       <div class="panel timer-panel">
@@ -540,7 +570,7 @@
           <button type="button" class="secondary" id="resetTimer">Reset</button>
           <button type="button" class="secondary quick-time" data-time="60">1 min</button>
           <button type="button" class="secondary quick-time" data-time="300">5 min</button>
-          <button type="button" class="secondary quick-time" data-time="1200">20 min</button>
+          <button type="button" class="secondary quick-time" data-time="1500">25 min</button>
         </div>
       </div>
     </section>
@@ -549,11 +579,11 @@
       <div class="pitch-card">
         <div class="big">60</div>
         <div>
-          <h3 id="pitch-title">The 60-second pitch</h3>
+          <h3 id="pitch-title">The 60-second commercial</h3>
           <div class="pitch-steps">
-            <div><b>10 sec</b>“You know what’s annoying?…”</div>
-            <div><b>30 sec</b>Name it, show it, explain it</div>
-            <div><b>20 sec</b>One reason it’s awesome</div>
+            <div><b>10 sec</b>Hook the problem</div>
+            <div><b>30 sec</b>Demo the product</div>
+            <div><b>20 sec</b>Close with a catchphrase</div>
           </div>
         </div>
       </div>
@@ -561,19 +591,19 @@
       <div class="support-grid">
         <div class="support-card">
           <h3>Younger kids · K–2</h3>
-          <p>Drawing counts as building. A pitch can be <strong>three sentences</strong>. Pair a shy child with the coach for the first two minutes.</p>
+          <p>Let the poster carry some of the message. Give them three lines: <strong>the problem, the product, the catchphrase.</strong></p>
         </div>
         <div class="support-card">
           <h3>Older kids · 3rd+</h3>
-          <p>Add one constraint: it must fit in a backpack, or cost under $5. <strong>Constraints make better pitches.</strong></p>
+          <p>Ask them to add a price, a customer, or one reason their product is better. <strong>Keep the commercial under 60 seconds.</strong></p>
         </div>
         <div class="support-card">
           <h3>If a kid freezes</h3>
-          <p>“Freeze means your brain is working.” Let the invention “speak” through them, or take a whisper-pitch. <strong>The rep matters more than the volume.</strong></p>
+          <p>Give the first line: “Do you ever get tired of...?” Then step back. A quiet commercial still counts. <strong>The rep matters more than the volume.</strong></p>
         </div>
         <div class="support-card">
           <h3>Feedback rule</h3>
-          <p>One specific compliment after every pitch: “I liked how you…” Coach models the first. <strong>No vague ‘good jobs.’</strong></p>
+          <p>After every commercial, clap and name one specific win: “I liked how you...” <strong>No vague “good jobs.”</strong></p>
         </div>
       </div>
     </section>
@@ -581,9 +611,21 @@
     <section class="pickup" aria-labelledby="pickup-title">
       <div>
         <h2 id="pickup-title">Parent pickup line</h2>
-        <blockquote id="pickupQuote">“Ask them to teach YOU the One-Word Story tonight—they’re the experts now. And if your kid did something brave, message me directly. I feature wins in our parents’ community.”</blockquote>
+        <blockquote id="pickupQuote">“Ask your kid to perform their 60-second commercial for you tonight. Listen for the problem, the product demo, and the catchphrase. Then name one thing they did with confidence.”</blockquote>
       </div>
       <button type="button" class="copy-btn" id="copyPickup">Copy line</button>
+    </section>
+
+    <section class="feedback-section" aria-labelledby="feedback-title">
+      <h2 id="feedback-title">After class: share feedback with parents</h2>
+      <p>Tap a kid’s name, pick them in the form, and add your comments. Their parent will get the feedback by email.</p>
+      <div class="kid-links">
+        <a class="kid-link" href="https://docs.google.com/forms/d/e/1FAIpQLSebYTcfj7enynCqHg9q_cAjJC5m1TTtVcdLvcNT6rav2eWqZQ/viewform" target="_blank" rel="noopener noreferrer">Ridhi</a>
+        <a class="kid-link" href="https://docs.google.com/forms/d/e/1FAIpQLSebYTcfj7enynCqHg9q_cAjJC5m1TTtVcdLvcNT6rav2eWqZQ/viewform" target="_blank" rel="noopener noreferrer">Venkat</a>
+        <a class="kid-link" href="https://docs.google.com/forms/d/e/1FAIpQLSebYTcfj7enynCqHg9q_cAjJC5m1TTtVcdLvcNT6rav2eWqZQ/viewform" target="_blank" rel="noopener noreferrer">Chaithra</a>
+        <a class="kid-link" href="https://docs.google.com/forms/d/e/1FAIpQLSebYTcfj7enynCqHg9q_cAjJC5m1TTtVcdLvcNT6rav2eWqZQ/viewform" target="_blank" rel="noopener noreferrer">Danika</a>
+        <a class="kid-link" href="https://docs.google.com/forms/d/e/1FAIpQLSebYTcfj7enynCqHg9q_cAjJC5m1TTtVcdLvcNT6rav2eWqZQ/viewform" target="_blank" rel="noopener noreferrer">Moksh</a>
+      </div>
     </section>
 
     <p class="after"><strong>After class:</strong> note which kids froze and what unlocked them. Photograph inventions only with parent permission.</p>
