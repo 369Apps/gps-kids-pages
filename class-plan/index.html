@@ -433,6 +433,89 @@
       .pickup { background: #dcf7e7; }
       .quickbar { background: #14213d; color: white; }
     }
+  
+    .runbar {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      margin: 0 0 18px; padding: 14px 16px;
+      background: var(--ink); color: var(--paper);
+      border-radius: 14px;
+    }
+    .run-launch {
+      border: 0; border-radius: 10px; padding: 14px 22px;
+      background: var(--yellow); color: #182235;
+      font-weight: 700; font-size: 1.05rem; cursor: pointer;
+    }
+    .runbar-note { font-size: .9rem; opacity: .75; }
+    .runmode {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; flex-direction: column;
+      background: var(--paper); color: var(--ink);
+    }
+    .runmode[hidden] { display: none; }
+    .runmode-top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 18px; border-bottom: 1px solid var(--line);
+    }
+    .runmode-step { font-weight: 700; letter-spacing: .12em; font-size: .78rem; color: var(--blue); }
+    .runmode-dots { display: flex; gap: 8px; }
+    .runmode-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+    .runmode-dot.on { background: var(--yellow); }
+    .runmode-close {
+      border: 0; background: transparent; font-size: 1.35rem; line-height: 1;
+      cursor: pointer; color: var(--ink); padding: 8px 10px;
+    }
+    .runmode-card { flex: 1; overflow-y: auto; padding: 28px 22px; }
+    .runmode-inner { max-width: 640px; margin: 0 auto; }
+    .runmode-meta {
+      font-weight: 700; letter-spacing: .08em; font-size: .85rem;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .runmode-label {
+      font-family: "Newsreader", serif; font-size: clamp(2rem, 8vw, 3.2rem);
+      line-height: 1; margin-bottom: 18px;
+    }
+    .runmode-say {
+      font-family: "Newsreader", serif; font-size: clamp(1.6rem, 6vw, 2.4rem);
+      line-height: 1.25; padding: 20px; margin-bottom: 22px;
+      background: var(--yellow-soft); border-radius: 16px 4px 16px 4px;
+    }
+    .runmode-say::before {
+      content: "SAY"; display: block; margin-bottom: 8px;
+      font-family: "DM Sans", sans-serif; font-size: .75rem; font-weight: 700;
+      letter-spacing: .14em; color: var(--red);
+    }
+    .runmode-do { list-style: none; padding: 0; margin: 0 0 10px; }
+    .runmode-do li {
+      position: relative; padding: 14px 14px 14px 44px; margin-bottom: 10px;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 12px; font-size: 1.1rem; font-weight: 600;
+    }
+    .runmode-do li::before {
+      content: "DO"; position: absolute; left: 13px; top: 17px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em; color: var(--blue);
+    }
+    .runmode-finale { text-align: center; padding: 34px 10px; }
+    .runmode-finale[hidden] { display: none; }
+    .runmode-power {
+      font-family: "Newsreader", serif; font-size: clamp(2.6rem, 11vw, 4.6rem);
+      line-height: 1; color: var(--red); margin-bottom: 16px;
+    }
+    .runmode-finale p { font-size: 1.15rem; color: var(--muted); }
+    .runmode-nav {
+      display: flex; gap: 12px;
+      padding: 14px 18px calc(16px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--line); background: var(--surface);
+    }
+    .runmode-back {
+      flex: 1; border: 1px solid var(--line); border-radius: 12px; padding: 18px;
+      background: var(--paper); color: var(--ink);
+      font-weight: 700; font-size: 1.05rem; cursor: pointer;
+    }
+    .runmode-next {
+      flex: 2; border: 0; border-radius: 12px; padding: 18px;
+      background: var(--yellow); color: #182235;
+      font-weight: 700; font-size: 1.15rem; cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -468,6 +551,11 @@
       <div class="section-head">
         <h2 id="run-title">Run of show</h2>
         <p>Tap any block to open coach notes. Volume is a muscle; train it loud.</p>
+      </div>
+
+      <div class="runbar">
+        <button type="button" class="run-launch" id="runLaunch">&#9654; RUN CLASS</button>
+        <span class="runbar-note">Live coach mode: one phase per screen, built for a phone.</span>
       </div>
 
       <div class="timeline">
@@ -610,7 +698,7 @@ I AM OUTSTANDING.
     <section class="pickup" aria-labelledby="pickup-title">
       <div>
         <h2 id="pickup-title">Parent pickup line</h2>
-        <blockquote id="pickupQuote">“Ask your kid to play The Volume Dial with you tonight — they learned it in class and they’re the teacher now. Have them say their pitch at volume 1, 3, and 5.”</blockquote>
+        <blockquote id="pickupQuote">“Ask your kid to play The Volume Dial with you tonight. They learned it in class and they’re the teacher now. Have them say their pitch at volume 1, 3, and 5.”</blockquote>
       </div>
       <button type="button" class="copy-btn" id="copyPickup">Copy line</button>
     </section>
@@ -702,6 +790,106 @@ I AM OUTSTANDING.
         copyButton.textContent = 'Select the line above';
       }
     });
+  </script>
+
+  <script type="application/json" id="runData">
+{"steps": [{"time": "6:00", "minutes": 5, "label": "Welcome circle", "title": "Welcome circle \u00b7 Whisper vs carry", "say": "Tuesday the eyes went up. Tonight the voice follows.", "do": ["Whisper your name to the person next to you", "Then say it to the whole circle", "Ask: which one carried?"]}, {"time": "6:05", "minutes": 10, "label": "The Volume Dial", "title": "Warm-up \u00b7 The Volume Dial", "say": "A 4 is not screaming. A 4 is the back row hearing you like you are next to them.", "do": ["Name line at volume 1, then 3, then 5", "Eyes up every time", "You stand at the back, thumbs up when it carries"]}, {"time": "6:15", "minutes": 25, "label": "Cards get loud", "title": "Build block \u00b7 Cards get loud", "say": "Your card holds the words. Your eyes and your voice do the convincing now.", "do": ["Cards out, no new cards tonight", "Pairs rehearse at volume 4", "Pick the loudest line for showtime"]}, {"time": "6:40", "minutes": 15, "label": "Loud pitches", "title": "Showtime \u00b7 Loud pitches", "say": "Volume 4, eyes up. If the back row cannot hear it, do it again.", "do": ["Brave mic goes around", "Repeat any line that does not carry", "Clap, then name one line heard clearly"]}, {"time": "6:55", "minutes": 5, "label": "Brave moment and pledge", "title": "Close \u00b7 Brave moment and pledge", "say": "MY VOICE CARRIES!", "do": ["Name the bravest moment tonight", "That kid leads the pledge as Pledge Captain", "Home mission: teach the Volume Dial at dinner"]}], "power_line": "MY VOICE CARRIES!"}
+</script>
+  <div class="runmode" id="runMode" hidden>
+    <div class="runmode-top">
+      <span class="runmode-step" id="runStepLabel"></span>
+      <span class="runmode-dots" id="runDots" aria-hidden="true"></span>
+      <button type="button" class="runmode-close" id="runClose" aria-label="Close run mode">&#10005;</button>
+    </div>
+    <div class="runmode-card">
+      <div class="runmode-inner">
+        <div id="runPhase">
+          <div class="runmode-meta"><span id="runTime"></span> &middot; <span id="runMins"></span></div>
+          <div class="runmode-label" id="runLabel"></div>
+          <div class="runmode-say" id="runSay"></div>
+          <ul class="runmode-do" id="runDo"></ul>
+        </div>
+        <div class="runmode-finale" id="runFinale" hidden>
+          <div class="runmode-power" id="runPower"></div>
+          <p>Pledge Captain leads, everyone echoes.</p>
+        </div>
+      </div>
+    </div>
+    <div class="runmode-nav">
+      <button type="button" class="runmode-back" id="runBack">&larr; BACK</button>
+      <button type="button" class="runmode-next" id="runNext">NEXT &rarr;</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const dataEl = document.getElementById('runData');
+      const launch = document.getElementById('runLaunch');
+      if (!dataEl || !launch) return;
+      const data = JSON.parse(dataEl.textContent);
+      const overlay = document.getElementById('runMode');
+      const stepLabel = document.getElementById('runStepLabel');
+      const dots = document.getElementById('runDots');
+      const runTime = document.getElementById('runTime');
+      const runMins = document.getElementById('runMins');
+      const runLabel = document.getElementById('runLabel');
+      const runSay = document.getElementById('runSay');
+      const runDo = document.getElementById('runDo');
+      const runPhase = document.getElementById('runPhase');
+      const runFinale = document.getElementById('runFinale');
+      const runPower = document.getElementById('runPower');
+      const back = document.getElementById('runBack');
+      const next = document.getElementById('runNext');
+      const closeBtn = document.getElementById('runClose');
+      const total = data.steps.length + 1;
+      let idx = 0;
+
+      for (let i = 0; i < total; i++) {
+        const d = document.createElement('span');
+        d.className = 'runmode-dot';
+        dots.appendChild(d);
+      }
+
+      function render() {
+        const finale = idx === data.steps.length;
+        Array.prototype.forEach.call(dots.children, function (d, i) {
+          d.classList.toggle('on', i === idx);
+        });
+        runPhase.hidden = finale;
+        runFinale.hidden = !finale;
+        if (finale) {
+          stepLabel.textContent = 'PLEDGE TIME';
+          runPower.textContent = data.power_line;
+          next.innerHTML = 'DONE &#10003;';
+        } else {
+          const s = data.steps[idx];
+          stepLabel.textContent = 'STEP ' + (idx + 1) + ' OF ' + data.steps.length;
+          runTime.textContent = s.time;
+          runMins.textContent = s.minutes + ' min';
+          runLabel.textContent = s.label;
+          runSay.textContent = s.say;
+          runDo.innerHTML = '';
+          s.do.forEach(function (line) {
+            const li = document.createElement('li');
+            li.textContent = line;
+            runDo.appendChild(li);
+          });
+          next.innerHTML = 'NEXT &rarr;';
+        }
+        back.style.visibility = idx === 0 ? 'hidden' : 'visible';
+        overlay.querySelector('.runmode-card').scrollTop = 0;
+      }
+
+      function open() { idx = 0; render(); overlay.hidden = false; document.body.style.overflow = 'hidden'; }
+      function close() { overlay.hidden = true; document.body.style.overflow = ''; }
+
+      launch.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      back.addEventListener('click', function () { if (idx > 0) { idx--; render(); } });
+      next.addEventListener('click', function () { if (idx < total - 1) { idx++; render(); } else { close(); } });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !overlay.hidden) close();
+      });
+    })();
   </script>
 </body>
 </html>
