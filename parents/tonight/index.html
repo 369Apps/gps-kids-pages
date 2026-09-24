@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Tonight at GPS Kids · Voice Carries</title>
+<meta name="description" content="Your kid found their volume 4 tonight. Play the 5-minute game, share the card, mark it done." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Young+Serif&display=swap');
+  :root {
+    --paper: #fbf8ef; --surface: #ffffff; --ink: #14213d; --muted: #536079;
+    --line: #dbe3ee; --blue: #1458d4; --yellow: #f3bd35; --red: #de4a3e;
+    --green: #1faa53; --shadow: 0 14px 44px rgba(20, 33, 61, .10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101826; --surface: #182235; --ink: #f4f7fc; --muted: #b8c3d6;
+      --line: #334159; --blue: #7ba7ff; --yellow: #ffd369; --red: #ff8176;
+      --green: #4cd47e; --shadow: 0 18px 44px rgba(0, 0, 0, .28);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "DM Sans", sans-serif; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 640px; margin: 0 auto; padding: 28px 20px 60px; }
+  .kicker {
+    display: flex; align-items: center; gap: 10px;
+    font-size: .72rem; font-weight: 800; letter-spacing: .14em; color: var(--muted);
+  }
+  .kicker svg { width: 34px; height: 34px; flex: none; }
+  h1 {
+    font-family: "Young Serif", serif; font-weight: 400;
+    font-size: 2.1rem; line-height: 1.15; margin: 14px 0 6px;
+  }
+  .hook { color: var(--muted); font-size: 1.02rem; margin: 0 0 22px; }
+  .hook strong { color: var(--ink); }
+  .pcard {
+    display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start;
+    background: var(--surface); border: 1px solid var(--line);
+    border-left: 6px solid var(--yellow); border-radius: 0 18px 18px 0;
+    padding: 16px 16px 16px 12px; margin: 0 0 12px; box-shadow: var(--shadow);
+  }
+  .pcard svg { width: 56px; height: 56px; }
+  .pcard h2 { margin: 2px 0 2px; font-size: 1.05rem; }
+  .pcard p { margin: 0; color: var(--muted); font-size: .92rem; }
+  .pcard.mission { border-left-color: var(--blue); display: block; }
+  .pcard.mission h2 { font-size: 1.2rem; margin-bottom: 4px; }
+  .btn {
+    display: block; width: 100%; text-align: center; text-decoration: none;
+    font-weight: 800; font-size: 1.02rem; padding: 15px 18px; border-radius: 16px;
+    margin-top: 10px; border: none; cursor: pointer; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn-play { background: var(--blue); color: #fff; }
+  .btn-share { background: var(--green); color: #fff; }
+  .btn-done { background: transparent; color: var(--muted); border: 2px solid var(--line); }
+  .btn-done.done { background: var(--yellow); border-color: var(--yellow); color: #14213d; }
+  footer { margin-top: 24px; text-align: center; color: var(--muted); font-size: .82rem; }
+  footer a { color: var(--blue); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="kicker">
+    <svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><circle cx="48" cy="56" r="22" stroke="var(--blue)" stroke-dasharray="1 11"/><path d="M30 26 q-9 3 -12 13" stroke="var(--red)"/><path d="M66 26 q9 3 12 13" stroke="var(--red)"/><path d="M22 36 q-12 1 -16 11" stroke="var(--red)"/><path d="M74 36 q12 1 16 11" stroke="var(--red)"/></svg>
+    TONIGHT AT GPS KIDS &middot; THU SEP 24
+  </div>
+  <h1>Voice Carries</h1>
+  <p class="hook">Your kid found their <strong>volume 4</strong> tonight. Loud enough for the back row.</p>
+
+  <div class="pcard">
+    <svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><g transform="rotate(-4 48 48)"><rect x="20" y="26" width="56" height="44" rx="7" stroke="var(--blue)"/><path d="M30 40 h36 M30 50 h36 M30 60 h22" stroke="var(--red)"/></g></svg>
+    <div><h2>The pitch card</h2><p>3-line pitch. Ask them to perform it for you.</p></div>
+  </div>
+
+  <div class="pcard">
+    <svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><path d="M18 68 a34 34 0 0 1 60 0" stroke="var(--blue)"/><path d="M28 54 l-5 -8 M40 42 l-2 -10 M56 42 l2 -10 M68 54 l5 -8" stroke="var(--blue)"/><path d="M48 68 L66 46" stroke="var(--red)"/><circle cx="48" cy="68" r="4.5" fill="var(--red)" stroke="none"/></svg>
+    <div><h2>Volume 4</h2><p>Not a whisper, not a scream. Ask for a demo at dinner.</p></div>
+  </div>
+
+  <div class="pcard">
+    <svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><rect x="38" y="12" width="20" height="34" rx="10" stroke="var(--blue)"/><path d="M43 22 h10 M43 30 h10" stroke="var(--blue)" stroke-width="2.5"/><path d="M30 40 q0 22 18 22 q18 0 18 -22" stroke="var(--blue)"/><path d="M48 62 v12 M38 80 h20" stroke="var(--red)"/></svg>
+    <div><h2>The podcast booth</h2><p>Their 60-second episode. Who they are. What they learned.</p></div>
+  </div>
+
+  <div class="pcard mission">
+    <h2>Your 5-minute mission</h2>
+    <p>Play tonight's game together, then send this card to another parent.</p>
+    <a class="btn btn-play" href="https://register.joingpskids.com/app/?ref=GK-SHARE">Play tonight's game</a>
+    <button class="btn btn-share" id="shareCard" type="button">Share this card</button>
+    <button class="btn btn-done" id="doneBtn" type="button">We did it</button>
+  </div>
+
+  <footer>GPS Kids &middot; Public Speaking Club</footer>
+</div>
+<script>
+(function () {
+  var doneBtn = document.getElementById('doneBtn');
+  var KEY = 'gpsk_tonight_done_2026-09-24';
+  function paint() {
+    var done = false;
+    try { done = localStorage.getItem(KEY) === '1'; } catch (e) {}
+    doneBtn.textContent = done ? 'Done for tonight ✓' : 'We did it';
+    doneBtn.classList.toggle('done', done);
+  }
+  doneBtn.addEventListener('click', function () {
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+    paint();
+  });
+  paint();
+
+  document.getElementById('shareCard').addEventListener('click', function () {
+    var url = location.href.split('#')[0];
+    var data = {
+      title: 'Tonight at GPS Kids',
+      text: 'Tonight at GPS Kids: Voice Carries. My kid found their volume 4. Play the 5-minute game with us:',
+      url: url
+    };
+    if (navigator.share) {
+      navigator.share(data).catch(function () {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(data.text + ' ' + url).then(function () {
+        var b = document.getElementById('shareCard');
+        b.textContent = 'Link copied ✓';
+        setTimeout(function () { b.textContent = 'Share this card'; }, 2000);
+      }).catch(function () {});
+    } else {
+      window.open('https://wa.me/?text=' + encodeURIComponent(data.text + ' ' + url), '_blank');
+    }
+  });
+})();
+</script>
+</body>
+</html>
