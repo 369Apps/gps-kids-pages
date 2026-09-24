@@ -515,6 +515,7 @@
   </style>
   <style>
     /* ---- cards-only layout ---- */
+    .class-kicker { margin: 0; padding: 14px 4px 4px; font-size: .95rem; color: var(--muted); }
     .class-head { padding: 10px 0 6px; }
     .class-head h1 {
       margin: 16px 0 10px;
@@ -565,24 +566,12 @@
 <body>
   <main class="page">
     <header class="class-head">
-      <div class="meta">
-        <span class="chip"><span class="dot"></span> Thursday, Sep 24</span>
-        <span class="chip">6:00&ndash;7:00 PM</span>
-        <span class="chip location">GPS Kids Inperson &middot; 1740 Grassland Pkwy, Alpharetta</span>
-      </div>
-      <h1 id="main-title">Voice Carries</h1>
-      <p class="theme-line">Find your honest volume 4. <strong>Loud enough for the back row, no screaming.</strong></p>
+      <p class="class-kicker">Thursday, Sep 24 &middot; 6:00&ndash;7:00 PM &middot; Voice Carries</p>
     </header>
 
-    <section aria-labelledby="run-title">
-      <div class="itinerary-head">
-        <h2 id="run-title">The itinerary</h2>
-        <p>7 cards. Tap a card to open it, or run the class full-screen.</p>
-      </div>
-
+    <section aria-label="Class itinerary">
       <div class="runbar">
         <button type="button" class="run-launch" id="runLaunch">&#9654; RUN CLASS</button>
-        <span class="runbar-note">One card per screen, built for a phone. Tap the timer on each card to count down.</span>
       </div>
 
       <div class="timeline">
@@ -631,12 +620,21 @@
           </span>
         </button>
 
-        <button class="phase" type="button" aria-expanded="false" data-minutes="5" data-label="Brave moment and pledge">
+        <button class="phase" type="button" aria-expanded="false" data-minutes="3" data-label="Brave moment and pledge">
           <span class="phase-time">6:55</span>
           <span><h3>Close · Brave moment and pledge</h3><p>Name the brave moments, choose a Pledge Captain, give the home mission, then finish loud.</p></span>
-          <span class="duration">5 min</span>
+          <span class="duration">3 min</span>
           <span class="phase-detail">
-            <p class="say">&ldquo;MY VOICE CARRIES!&rdquo;</p><ul><li>Name the bravest moment tonight</li><li>That kid leads the pledge as Pledge Captain</li><li>Home mission: teach the Volume Dial at dinner</li><li>Tell parents: play tonight's game at home and put your family name on the leaderboard</li></ul><blockquote class="card-note">Ask your kid to play The Volume Dial with you tonight. They learned it in class and they’re the teacher now. Have them say their pitch at volume 1, 3, and 5. Then put your family name on the leaderboard in the app, so the kids see it tomorrow.</blockquote>
+            <p class="say">&ldquo;MY VOICE CARRIES!&rdquo;</p><ul><li>Name the bravest moment tonight</li><li>That kid becomes Pledge Captain</li><li>Home mission: teach the Volume Dial at dinner</li><li>Tell parents: play tonight's game at home and put your family name on the leaderboard</li></ul><blockquote class="card-note">Ask your kid to play The Volume Dial with you tonight. They learned it in class and they’re the teacher now. Have them say their pitch at volume 1, 3, and 5. Then put your family name on the leaderboard in the app, so the kids see it tomorrow.</blockquote>
+          </span>
+        </button>
+
+        <button class="phase" type="button" aria-expanded="false" data-minutes="2" data-label="The pledge">
+          <span class="phase-time">6:58</span>
+          <span><h3>The pledge</h3><p>End loud. Mean it.</p></span>
+          <span class="duration">2 min</span>
+          <span class="phase-detail">
+            <p class="say">&ldquo;MY VOICE CARRIES!&rdquo;</p><ul><li>Pledge Captain starts it</li><li>Everyone echoes back, standing tall</li><li>One more time, loud enough for the back row</li></ul>
           </span>
         </button>
 
@@ -665,7 +663,7 @@
   </script>
 
   <script type="application/json" id="runData">
-{"steps": [{"time": "5:55", "minutes": 5, "label": "Set the stage", "title": "Before 6:00 \u00b7 Set the stage", "say": "The room is the instrument. Tune it before they walk in.", "do": ["Paper out", "Markers out", "Tape ready", "Timer on your phone", "The brave mic in your hand"], "note": "", "link": null}, {"time": "6:00", "minutes": 5, "label": "Welcome circle", "title": "Welcome circle \u00b7 Whisper vs carry", "say": "Tonight your voice carries.", "do": ["Whisper your name to the person next to you", "Then say it to the whole circle", "Ask: which one carried?", "Tonight's mission: every kid builds a 3-line pitch card and delivers it loud", "Coach rule tonight: silly is brave"], "note": "", "link": null}, {"time": "6:05", "minutes": 10, "label": "The Volume Dial", "title": "Warm-up \u00b7 The Volume Dial", "say": "A 4 is not screaming. A 4 is the back row hearing you like you are next to them.", "do": ["Name line at volume 1, then 3, then 5", "Eyes up every time", "You stand at the back, thumbs up when it carries", "If a kid freezes: \u201cGive it to me at a 3.\u201d A quiet pitch to one person still counts"], "note": "", "link": null}, {"time": "6:15", "minutes": 25, "label": "Cards get loud", "title": "Build block \u00b7 Cards get loud", "say": "Your card holds the words. Your eyes and your voice do the convincing now.", "do": ["Every child makes their own three-line card:", "1. Product name", "2. One reason it is great", "3. One last line people remember", "Do one example together first: The Never-Spill Cup / lid locks, juice stays in the cup / Spill the joke, not the juice!", "K-2: name + one loud line. 3rd+: all three lines", "Doodle station: kids draw their pitch card on the app"], "note": "", "link": null}, {"time": "6:40", "minutes": 15, "label": "Loud pitches", "title": "Showtime \u00b7 Loud pitches", "say": "Volume 4, eyes up. If the back row cannot hear it, do it again.", "do": ["Brave mic goes around", "Repeat any line that does not carry", "Clap first, then name ONE line heard clearly. No vague \u201cgood jobs\u201d"], "note": "", "link": null}, {"time": "6:55", "minutes": 5, "label": "Brave moment and pledge", "title": "Close \u00b7 Brave moment and pledge", "say": "MY VOICE CARRIES!", "do": ["Name the bravest moment tonight", "That kid leads the pledge as Pledge Captain", "Home mission: teach the Volume Dial at dinner", "Tell parents: play tonight's game at home and put your family name on the leaderboard"], "note": "Ask your kid to play The Volume Dial with you tonight. They learned it in class and they\u2019re the teacher now. Have them say their pitch at volume 1, 3, and 5. Then put your family name on the leaderboard in the app, so the kids see it tomorrow.", "link": null}, {"time": "7:00", "minutes": 5, "label": "Coach notes", "title": "After class \u00b7 Coach notes", "say": "Tonight's notes are next week's edge.", "do": ["Write down: who found volume 4, who still whispers", "Send parent feedback through the form", "Photograph pitch cards only with parent permission"], "note": "", "link": {"label": "Open feedback form", "url": "https://docs.google.com/forms/d/e/1FAIpQLSebYTcfj7enynCqHg9q_cAjJC5m1TTtVcdLvcNT6rav2eWqZQ/viewform"}}], "power_line": "MY VOICE CARRIES!"}
+{"steps": [{"time": "5:55", "minutes": 5, "label": "Set the stage", "title": "Before 6:00 \u00b7 Set the stage", "say": "The room is the instrument. Tune it before they walk in.", "do": ["Paper out", "Markers out", "Tape ready", "Timer on your phone", "The brave mic in your hand"], "note": "", "link": null}, {"time": "6:00", "minutes": 5, "label": "Welcome circle", "title": "Welcome circle \u00b7 Whisper vs carry", "say": "Tonight your voice carries.", "do": ["Whisper your name to the person next to you", "Then say it to the whole circle", "Ask: which one carried?", "Tonight's mission: every kid builds a 3-line pitch card and delivers it loud", "Coach rule tonight: silly is brave"], "note": "", "link": null}, {"time": "6:05", "minutes": 10, "label": "The Volume Dial", "title": "Warm-up \u00b7 The Volume Dial", "say": "A 4 is not screaming. A 4 is the back row hearing you like you are next to them.", "do": ["Name line at volume 1, then 3, then 5", "Eyes up every time", "You stand at the back, thumbs up when it carries", "If a kid freezes: \u201cGive it to me at a 3.\u201d A quiet pitch to one person still counts"], "note": "", "link": null}, {"time": "6:15", "minutes": 25, "label": "Cards get loud", "title": "Build block \u00b7 Cards get loud", "say": "Your card holds the words. Your eyes and your voice do the convincing now.", "do": ["Every child makes their own three-line card:", "1. Product name", "2. One reason it is great", "3. One last line people remember", "Do one example together first: The Never-Spill Cup / lid locks, juice stays in the cup / Spill the joke, not the juice!", "K-2: name + one loud line. 3rd+: all three lines", "Doodle station: kids draw their pitch card on the app"], "note": "", "link": null}, {"time": "6:40", "minutes": 15, "label": "Loud pitches", "title": "Showtime \u00b7 Loud pitches", "say": "Volume 4, eyes up. If the back row cannot hear it, do it again.", "do": ["Brave mic goes around", "Repeat any line that does not carry", "Clap first, then name ONE line heard clearly. No vague \u201cgood jobs\u201d"], "note": "", "link": null}, {"time": "6:55", "minutes": 3, "label": "Brave moment and pledge", "title": "Close \u00b7 Brave moment and pledge", "say": "MY VOICE CARRIES!", "do": ["Name the bravest moment tonight", "That kid becomes Pledge Captain", "Home mission: teach the Volume Dial at dinner", "Tell parents: play tonight's game at home and put your family name on the leaderboard"], "note": "Ask your kid to play The Volume Dial with you tonight. They learned it in class and they\u2019re the teacher now. Have them say their pitch at volume 1, 3, and 5. Then put your family name on the leaderboard in the app, so the kids see it tomorrow.", "link": null}, {"time": "6:58", "minutes": 2, "label": "The pledge", "title": "The pledge", "say": "MY VOICE CARRIES!", "do": ["Pledge Captain starts it", "Everyone echoes back, standing tall", "One more time, loud enough for the back row"], "note": "", "link": null}, {"time": "7:00", "minutes": 5, "label": "Coach notes", "title": "After class \u00b7 Coach notes", "say": "Tonight's notes are next week's edge.", "do": ["Write down: who found volume 4, who still whispers", "Send parent feedback through the form", "Photograph pitch cards only with parent permission"], "note": "", "link": {"label": "Open feedback form", "url": "https://docs.google.com/forms/d/e/1FAIpQLSebYTcfj7enynCqHg9q_cAjJC5m1TTtVcdLvcNT6rav2eWqZQ/viewform"}}], "power_line": "MY VOICE CARRIES!"}
 </script>
   <div class="runmode" id="runMode" hidden>
     <div class="runmode-top">
@@ -683,11 +681,6 @@
           <ul class="runmode-do" id="runDo"></ul>
           <blockquote class="runmode-note" id="runNote" hidden></blockquote>
           <a class="runmode-link" id="runLink" hidden target="_blank" rel="noopener noreferrer"></a>
-        </div>
-        <div class="runmode-finale" id="runFinale" hidden>
-          <div class="runmode-doodle" id="runFinaleDoodle" aria-hidden="true"></div>
-          <div class="runmode-power" id="runPower"></div>
-          <p>Pledge Captain leads, everyone echoes.</p>
         </div>
       </div>
     </div>
@@ -710,9 +703,6 @@
       const runSay = document.getElementById('runSay');
       const runDo = document.getElementById('runDo');
       const runPhase = document.getElementById('runPhase');
-      const runFinale = document.getElementById('runFinale');
-      const runFinaleDoodle = document.getElementById('runFinaleDoodle');
-      const runPower = document.getElementById('runPower');
       const doodles = [
         '<svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><circle cx="48" cy="56" r="22" stroke="var(--blue)" stroke-dasharray="1 11"/><path d="M30 26 q-9 3 -12 13" stroke="var(--red)"/><path d="M66 26 q9 3 12 13" stroke="var(--red)"/><path d="M22 36 q-12 1 -16 11" stroke="var(--red)"/><path d="M74 36 q12 1 16 11" stroke="var(--red)"/></svg>',
         '<svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><path d="M18 68 a34 34 0 0 1 60 0" stroke="var(--blue)"/><path d="M28 54 l-5 -8 M40 42 l-2 -10 M56 42 l2 -10 M68 54 l5 -8" stroke="var(--blue)"/><path d="M48 68 L66 46" stroke="var(--red)"/><circle cx="48" cy="68" r="4.5" fill="var(--red)" stroke="none"/></svg>',
@@ -720,7 +710,6 @@
         '<svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><rect x="38" y="12" width="20" height="34" rx="10" stroke="var(--blue)"/><path d="M43 22 h10 M43 30 h10" stroke="var(--blue)" stroke-width="2.5"/><path d="M30 40 q0 22 18 22 q18 0 18 -22" stroke="var(--blue)"/><path d="M48 62 v12 M38 80 h20" stroke="var(--red)"/></svg>',
         '<svg viewBox="0 0 96 96" fill="none" stroke="var(--red)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M48 10 l8 21 22 1 -17 14 6 21 -19 -12 -19 12 6 -21 -17 -14 22 -1 z"/></svg>'
       ];
-      runFinaleDoodle.innerHTML = doodles[4];
       const runTimer = document.getElementById('runTimer');
       const runNote = document.getElementById('runNote');
       const runLink = document.getElementById('runLink');
@@ -759,7 +748,7 @@
       const back = document.getElementById('runBack');
       const next = document.getElementById('runNext');
       const closeBtn = document.getElementById('runClose');
-      const total = data.steps.length + 1;
+      const total = data.steps.length;
       let idx = 0;
 
       for (let i = 0; i < total; i++) {
@@ -769,43 +758,30 @@
       }
 
       function render() {
-        const finale = idx === data.steps.length;
         Array.prototype.forEach.call(dots.children, function (d, i) {
           d.classList.toggle('on', i === idx);
         });
-        runPhase.hidden = finale;
-        runFinale.hidden = !finale;
-        if (finale) {
-          stepLabel.textContent = 'PLEDGE';
-          runPower.textContent = data.power_line;
-          next.innerHTML = 'DONE &#10003;';
-          stopT();
-          runTimer.style.visibility = 'hidden';
-          runNote.hidden = true;
-          runLink.hidden = true;
-        } else {
-          const s = data.steps[idx];
-          stepLabel.textContent = s.minutes + ' MIN';
-          runDoodle.innerHTML = doodles[Math.min(idx, doodles.length - 1)];
-          runLabel.textContent = s.label;
-          runSay.textContent = s.say;
-          runDo.innerHTML = '';
-          s.do.forEach(function (line) {
-            const li = document.createElement('li');
-            li.textContent = line;
-            runDo.appendChild(li);
-          });
-          next.innerHTML = 'NEXT &rarr;';
-          setT(s.minutes);
-          runTimer.style.visibility = 'visible';
-          if (s.note) { runNote.textContent = s.note; runNote.hidden = false; }
-          else { runNote.hidden = true; }
-          if (s.link && s.link.url) {
-            runLink.href = s.link.url;
-            runLink.textContent = s.link.label + ' \u2192';
-            runLink.hidden = false;
-          } else { runLink.hidden = true; }
-        }
+        const s = data.steps[idx];
+        stepLabel.textContent = s.minutes + ' MIN';
+        runDoodle.innerHTML = doodles[Math.min(idx, doodles.length - 1)];
+        runLabel.textContent = s.label;
+        runSay.textContent = s.say;
+        runDo.innerHTML = '';
+        s.do.forEach(function (line) {
+          const li = document.createElement('li');
+          li.textContent = line;
+          runDo.appendChild(li);
+        });
+        next.innerHTML = (idx === data.steps.length - 1) ? 'DONE &#10003;' : 'NEXT &rarr;';
+        setT(s.minutes);
+        runTimer.style.visibility = 'visible';
+        if (s.note) { runNote.textContent = s.note; runNote.hidden = false; }
+        else { runNote.hidden = true; }
+        if (s.link && s.link.url) {
+          runLink.href = s.link.url;
+          runLink.textContent = s.link.label + ' →';
+          runLink.hidden = false;
+        } else { runLink.hidden = true; }
         back.style.visibility = idx === 0 ? 'hidden' : 'visible';
         overlay.querySelector('.runmode-card').scrollTop = 0;
       }
