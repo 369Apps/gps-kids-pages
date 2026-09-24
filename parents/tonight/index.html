@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Tonight at GPS Kids · Voice Carries</title>
-<meta name="description" content="Your kid found their volume 4 tonight. Play the 5-minute game, share the card, mark it done." />
+<meta name="description" content="Your kid is coming home loud tonight. On purpose. Play the 5-minute game, share the card." />
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Young+Serif&display=swap');
   :root {
@@ -25,7 +25,7 @@
     font-family: "DM Sans", sans-serif; line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
-  .page { max-width: 640px; margin: 0 auto; padding: 28px 20px 60px; }
+  .page { max-width: 640px; margin: 0 auto; padding: 32px 20px 60px; }
   .kicker {
     display: flex; align-items: center; gap: 10px;
     font-size: .72rem; font-weight: 800; letter-spacing: .14em; color: var(--muted);
@@ -33,33 +33,23 @@
   .kicker svg { width: 34px; height: 34px; flex: none; }
   h1 {
     font-family: "Young Serif", serif; font-weight: 400;
-    font-size: 2.1rem; line-height: 1.15; margin: 14px 0 6px;
+    font-size: 2.4rem; line-height: 1.1; margin: 16px 0 10px;
   }
-  .hook { color: var(--muted); font-size: 1.02rem; margin: 0 0 22px; }
+  .hook { color: var(--muted); font-size: 1.08rem; margin: 0 0 24px; }
   .hook strong { color: var(--ink); }
-  .pcard {
-    display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start;
-    background: var(--surface); border: 1px solid var(--line);
-    border-left: 6px solid var(--yellow); border-radius: 0 18px 18px 0;
-    padding: 16px 16px 16px 12px; margin: 0 0 12px; box-shadow: var(--shadow);
-  }
-  .pcard svg { width: 56px; height: 56px; }
-  .pcard h2 { margin: 2px 0 2px; font-size: 1.05rem; }
-  .pcard p { margin: 0; color: var(--muted); font-size: .92rem; }
-  .pcard.mission { border-left-color: var(--blue); display: block; }
-  .pcard.mission h2 { font-size: 1.2rem; margin-bottom: 4px; }
   .btn {
     display: block; width: 100%; text-align: center; text-decoration: none;
-    font-weight: 800; font-size: 1.02rem; padding: 15px 18px; border-radius: 16px;
-    margin-top: 10px; border: none; cursor: pointer; font-family: inherit;
+    font-weight: 800; font-size: 1.05rem; padding: 16px 18px; border-radius: 16px;
+    border: none; cursor: pointer; font-family: inherit;
   }
   .btn:active { transform: scale(.98); }
-  .btn-play { background: var(--blue); color: #fff; }
-  .btn-share { background: var(--green); color: #fff; }
-  .btn-done { background: transparent; color: var(--muted); border: 2px solid var(--line); }
+  .btn-play { background: var(--blue); color: #fff; font-size: 1.2rem; padding: 20px 18px; box-shadow: var(--shadow); }
+  .play-sub { text-align: center; color: var(--muted); font-size: .88rem; margin: 10px 0 30px; }
+  .share-row { display: flex; gap: 10px; }
+  .btn-share { background: var(--green); color: #fff; flex: 1; }
+  .btn-done { background: transparent; color: var(--muted); border: 2px solid var(--line); flex: 1; }
   .btn-done.done { background: var(--yellow); border-color: var(--yellow); color: #14213d; }
-  footer { margin-top: 24px; text-align: center; color: var(--muted); font-size: .82rem; }
-  footer a { color: var(--blue); font-weight: 700; }
+  footer { margin-top: 28px; text-align: center; color: var(--muted); font-size: .82rem; }
 </style>
 </head>
 <body>
@@ -68,29 +58,14 @@
     <svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><circle cx="48" cy="56" r="22" stroke="var(--blue)" stroke-dasharray="1 11"/><path d="M30 26 q-9 3 -12 13" stroke="var(--red)"/><path d="M66 26 q9 3 12 13" stroke="var(--red)"/><path d="M22 36 q-12 1 -16 11" stroke="var(--red)"/><path d="M74 36 q12 1 16 11" stroke="var(--red)"/></svg>
     TONIGHT AT GPS KIDS &middot; THU SEP 24
   </div>
-  <h1>Voice Carries</h1>
-  <p class="hook">Your kid found their <strong>volume 4</strong> tonight. Loud enough for the back row.</p>
+  <h1>Your kid is coming home loud tonight.</h1>
+  <p class="hook">On purpose. They found their <strong>volume 4</strong> today, and they&rsquo;ve been waiting all day to show you.</p>
 
-  <div class="pcard">
-    <svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><g transform="rotate(-4 48 48)"><rect x="20" y="26" width="56" height="44" rx="7" stroke="var(--blue)"/><path d="M30 40 h36 M30 50 h36 M30 60 h22" stroke="var(--red)"/></g></svg>
-    <div><h2>The pitch card</h2><p>3-line pitch. Ask them to perform it for you.</p></div>
-  </div>
+  <a class="btn btn-play" href="https://register.joingpskids.com/app/?ref=GK-SHARE">Play tonight&rsquo;s game</a>
+  <p class="play-sub">Five minutes. Zero prep. They lead, you play along.</p>
 
-  <div class="pcard">
-    <svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><path d="M18 68 a34 34 0 0 1 60 0" stroke="var(--blue)"/><path d="M28 54 l-5 -8 M40 42 l-2 -10 M56 42 l2 -10 M68 54 l5 -8" stroke="var(--blue)"/><path d="M48 68 L66 46" stroke="var(--red)"/><circle cx="48" cy="68" r="4.5" fill="var(--red)" stroke="none"/></svg>
-    <div><h2>Volume 4</h2><p>Not a whisper, not a scream. Ask for a demo at dinner.</p></div>
-  </div>
-
-  <div class="pcard">
-    <svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><rect x="38" y="12" width="20" height="34" rx="10" stroke="var(--blue)"/><path d="M43 22 h10 M43 30 h10" stroke="var(--blue)" stroke-width="2.5"/><path d="M30 40 q0 22 18 22 q18 0 18 -22" stroke="var(--blue)"/><path d="M48 62 v12 M38 80 h20" stroke="var(--red)"/></svg>
-    <div><h2>The podcast booth</h2><p>Their 60-second episode. Who they are. What they learned.</p></div>
-  </div>
-
-  <div class="pcard mission">
-    <h2>Your 5-minute mission</h2>
-    <p>Play tonight's game together, then send this card to another parent.</p>
-    <a class="btn btn-play" href="https://register.joingpskids.com/app/?ref=GK-SHARE">Play tonight's game</a>
-    <button class="btn btn-share" id="shareCard" type="button">Share this card</button>
+  <div class="share-row">
+    <button class="btn btn-share" id="shareCard" type="button">Share</button>
     <button class="btn btn-done" id="doneBtn" type="button">We did it</button>
   </div>
 
@@ -103,7 +78,7 @@
   function paint() {
     var done = false;
     try { done = localStorage.getItem(KEY) === '1'; } catch (e) {}
-    doneBtn.textContent = done ? 'Done for tonight ✓' : 'We did it';
+    doneBtn.textContent = done ? 'Done \u2713' : 'We did it';
     doneBtn.classList.toggle('done', done);
   }
   doneBtn.addEventListener('click', function () {
@@ -116,7 +91,7 @@
     var url = location.href.split('#')[0];
     var data = {
       title: 'Tonight at GPS Kids',
-      text: 'Tonight at GPS Kids: Voice Carries. My kid found their volume 4. Play the 5-minute game with us:',
+      text: 'My kid came home LOUD tonight (on purpose). They found their volume 4 at GPS Kids. Play the 5-minute game with yours:',
       url: url
     };
     if (navigator.share) {
@@ -124,8 +99,8 @@
     } else if (navigator.clipboard) {
       navigator.clipboard.writeText(data.text + ' ' + url).then(function () {
         var b = document.getElementById('shareCard');
-        b.textContent = 'Link copied ✓';
-        setTimeout(function () { b.textContent = 'Share this card'; }, 2000);
+        b.textContent = 'Copied \u2713';
+        setTimeout(function () { b.textContent = 'Share'; }, 2000);
       }).catch(function () {});
     } else {
       window.open('https://wa.me/?text=' + encodeURIComponent(data.text + ' ' + url), '_blank');
