@@ -456,7 +456,7 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 12px 18px; border-bottom: 1px solid var(--line);
     }
-    .runmode-step { font-weight: 700; letter-spacing: .12em; font-size: .78rem; color: var(--blue); }
+    .runmode-step { font-weight: 800; font-size: .8rem; letter-spacing: .1em; color: #182235; background: var(--yellow); border-radius: 999px; padding: 7px 14px; }
     .runmode-dots { display: flex; gap: 8px; }
     .runmode-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
     .runmode-dot.on { background: var(--yellow); }
@@ -466,33 +466,29 @@
     }
     .runmode-card { flex: 1; overflow-y: auto; padding: 28px 22px; }
     .runmode-inner { max-width: 640px; margin: 0 auto; }
-    .runmode-meta {
-      font-weight: 700; letter-spacing: .08em; font-size: .85rem;
-      color: var(--muted); margin-bottom: 8px;
-    }
+    .runmode-doodle { display: flex; justify-content: center; margin: 4px 0 0; }
+    .runmode-doodle svg { width: 88px; height: 88px; transform: rotate(-3deg); }
     .runmode-label {
       font-family: "Newsreader", serif; font-size: clamp(2rem, 8vw, 3.2rem);
       line-height: 1; margin-bottom: 18px;
     }
     .runmode-say {
-      font-family: "Newsreader", serif; font-size: clamp(1.6rem, 6vw, 2.4rem);
-      line-height: 1.25; padding: 20px; margin-bottom: 22px;
-      background: var(--yellow-soft); border-radius: 16px 4px 16px 4px;
+      font-family: "Newsreader", serif; font-size: clamp(1.7rem, 6.5vw, 2.6rem);
+      line-height: 1.25; padding: 22px; margin-bottom: 18px;
+      background: var(--yellow-soft); border: 2px dashed var(--yellow);
+      border-radius: 18px 6px 18px 6px;
     }
-    .runmode-say::before {
-      content: "SAY"; display: block; margin-bottom: 8px;
-      font-family: "DM Sans", sans-serif; font-size: .75rem; font-weight: 700;
-      letter-spacing: .14em; color: var(--red);
-    }
-    .runmode-do { list-style: none; padding: 0; margin: 0 0 10px; }
+    .runmode-do { list-style: none; padding: 0; margin: 0; }
     .runmode-do li {
-      position: relative; padding: 14px 14px 14px 44px; margin-bottom: 10px;
-      background: var(--surface); border: 1px solid var(--line);
-      border-radius: 12px; font-size: 1.1rem; font-weight: 600;
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 13px 4px; font-size: 1.15rem; font-weight: 600;
+      border-bottom: 2px dotted var(--line);
     }
+    .runmode-do li:last-child { border-bottom: 0; }
     .runmode-do li::before {
-      content: "DO"; position: absolute; left: 13px; top: 17px;
-      font-size: .7rem; font-weight: 700; letter-spacing: .1em; color: var(--blue);
+      content: ""; flex: 0 0 auto; width: 22px; height: 22px; margin-top: 3px;
+      border: 2.5px solid var(--blue); border-radius: 7px 9px 7px 10px;
+      transform: rotate(-2deg);
     }
     .runmode-finale { text-align: center; padding: 34px 10px; }
     .runmode-finale[hidden] { display: none; }
@@ -804,12 +800,13 @@ I AM OUTSTANDING.
     <div class="runmode-card">
       <div class="runmode-inner">
         <div id="runPhase">
-          <div class="runmode-meta"><span id="runTime"></span> &middot; <span id="runMins"></span></div>
+          <div class="runmode-doodle" id="runDoodle" aria-hidden="true"></div>
           <div class="runmode-label" id="runLabel"></div>
           <div class="runmode-say" id="runSay"></div>
           <ul class="runmode-do" id="runDo"></ul>
         </div>
         <div class="runmode-finale" id="runFinale" hidden>
+          <div class="runmode-doodle" id="runFinaleDoodle" aria-hidden="true"></div>
           <div class="runmode-power" id="runPower"></div>
           <p>Pledge Captain leads, everyone echoes.</p>
         </div>
@@ -829,14 +826,22 @@ I AM OUTSTANDING.
       const overlay = document.getElementById('runMode');
       const stepLabel = document.getElementById('runStepLabel');
       const dots = document.getElementById('runDots');
-      const runTime = document.getElementById('runTime');
-      const runMins = document.getElementById('runMins');
+      const runDoodle = document.getElementById('runDoodle');
       const runLabel = document.getElementById('runLabel');
       const runSay = document.getElementById('runSay');
       const runDo = document.getElementById('runDo');
       const runPhase = document.getElementById('runPhase');
       const runFinale = document.getElementById('runFinale');
+      const runFinaleDoodle = document.getElementById('runFinaleDoodle');
       const runPower = document.getElementById('runPower');
+      const doodles = [
+        '<svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><circle cx="48" cy="56" r="22" stroke="var(--blue)" stroke-dasharray="1 11"/><path d="M30 26 q-9 3 -12 13" stroke="var(--red)"/><path d="M66 26 q9 3 12 13" stroke="var(--red)"/><path d="M22 36 q-12 1 -16 11" stroke="var(--red)"/><path d="M74 36 q12 1 16 11" stroke="var(--red)"/></svg>',
+        '<svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><path d="M18 68 a34 34 0 0 1 60 0" stroke="var(--blue)"/><path d="M28 54 l-5 -8 M40 42 l-2 -10 M56 42 l2 -10 M68 54 l5 -8" stroke="var(--blue)"/><path d="M48 68 L66 46" stroke="var(--red)"/><circle cx="48" cy="68" r="4.5" fill="var(--red)" stroke="none"/></svg>',
+        '<svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><g transform="rotate(-4 48 48)"><rect x="20" y="26" width="56" height="44" rx="7" stroke="var(--blue)"/><path d="M30 40 h36 M30 50 h36 M30 60 h22" stroke="var(--red)"/></g></svg>',
+        '<svg viewBox="0 0 96 96" fill="none" stroke-width="4" stroke-linecap="round"><rect x="38" y="12" width="20" height="34" rx="10" stroke="var(--blue)"/><path d="M43 22 h10 M43 30 h10" stroke="var(--blue)" stroke-width="2.5"/><path d="M30 40 q0 22 18 22 q18 0 18 -22" stroke="var(--blue)"/><path d="M48 62 v12 M38 80 h20" stroke="var(--red)"/></svg>',
+        '<svg viewBox="0 0 96 96" fill="none" stroke="var(--red)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M48 10 l8 21 22 1 -17 14 6 21 -19 -12 -19 12 6 -21 -17 -14 22 -1 z"/></svg>'
+      ];
+      runFinaleDoodle.innerHTML = doodles[4];
       const back = document.getElementById('runBack');
       const next = document.getElementById('runNext');
       const closeBtn = document.getElementById('runClose');
@@ -857,14 +862,13 @@ I AM OUTSTANDING.
         runPhase.hidden = finale;
         runFinale.hidden = !finale;
         if (finale) {
-          stepLabel.textContent = 'PLEDGE TIME';
+          stepLabel.textContent = 'PLEDGE';
           runPower.textContent = data.power_line;
           next.innerHTML = 'DONE &#10003;';
         } else {
           const s = data.steps[idx];
-          stepLabel.textContent = 'STEP ' + (idx + 1) + ' OF ' + data.steps.length;
-          runTime.textContent = s.time;
-          runMins.textContent = s.minutes + ' min';
+          stepLabel.textContent = s.minutes + ' MIN';
+          runDoodle.innerHTML = doodles[Math.min(idx, doodles.length - 1)];
           runLabel.textContent = s.label;
           runSay.textContent = s.say;
           runDo.innerHTML = '';
