@@ -4,47 +4,102 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GPS Kids Club</title>
+<meta name="description" content="GPS Kids. This is a public speaking club. Practice free, enter the free Kids Pitch Night, and join us in person in Alpharetta.">
+<meta property="og:title" content="GPS Kids Club">
+<meta property="og:description" content="This is a public speaking club. Practice free and enter the free Kids Pitch Night.">
+<meta property="og:image" content="https://club.joingpskids.com/watch/puppy-pitch.jpg">
+<meta property="og:url" content="https://club.joingpskids.com/">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 48px 20px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 32px 16px 40px; }
   .wrap { max-width: 560px; width: 100%; }
-  h1 { font-size: 2rem; margin-bottom: 8px; }
+  h1 { font-size: 1.9rem; margin-bottom: 6px; }
   h1 .emoji { margin-right: 8px; }
-  p.sub { color: #94a3b8; margin-bottom: 32px; font-size: 1.05rem; line-height: 1.5; }
-  a.card { display: block; background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; text-decoration: none; color: inherit; transition: transform .12s ease, border-color .12s ease; }
+  p.tag { color: #f59e0b; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
+  p.sub { color: #94a3b8; margin-bottom: 20px; font-size: 1rem; line-height: 1.5; }
+  .cta { display: grid; gap: 10px; margin-bottom: 14px; }
+  a.btn { display: block; text-align: center; text-decoration: none; font-weight: 800; font-size: 1.1rem; padding: 16px 18px; border-radius: 14px; }
+  a.btn small { display: block; font-weight: 500; font-size: .85rem; margin-top: 3px; opacity: .85; }
+  a.btn.primary { background: #f59e0b; color: #0f172a; }
+  a.btn.secondary { background: #1e293b; color: #f1f5f9; border: 2px solid #f59e0b; }
+  .info { background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 16px 18px; margin-bottom: 14px; font-size: .95rem; line-height: 1.55; color: #cbd5e1; }
+  .info b { color: #f1f5f9; }
+  .info p + p { margin-top: 8px; }
+  h2 { font-size: 1.15rem; margin: 26px 0 12px; }
+  .watch { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .watch figure { background: #1e293b; border: 1px solid #334155; border-radius: 14px; overflow: hidden; }
+  .watch video { display: block; width: 100%; aspect-ratio: 9 / 16; background: #000; object-fit: cover; }
+  .watch figcaption { padding: 8px 10px; font-size: .85rem; color: #94a3b8; line-height: 1.35; }
+  a.ig { display: inline-block; margin: 12px 0 4px; color: #f59e0b; text-decoration: none; font-weight: 700; }
+  a.card { display: block; background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 18px 20px; margin-bottom: 12px; text-decoration: none; color: inherit; transition: transform .12s ease, border-color .12s ease; }
   a.card:hover { transform: translateY(-2px); border-color: #f59e0b; }
-  a.card .t { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+  a.card .t { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
   a.card .d { color: #94a3b8; font-size: .95rem; line-height: 1.45; }
-  footer { margin-top: 36px; color: #64748b; font-size: .85rem; text-align: center; }
+  footer { margin-top: 30px; color: #64748b; font-size: .85rem; text-align: center; line-height: 1.6; }
   footer a { color: #f59e0b; text-decoration: none; }
+  @media (min-width: 600px) { body { padding-top: 48px; } h1 { font-size: 2rem; } }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1><span class="emoji">🧠🎤</span>GPS Kids Club</h1>
-  <p class="sub">Problem solving is the build. Public speaking is the sell. Every session, kids make something — then stand up and pitch it.</p>
+  <p class="tag">GPS Kids. This is a public speaking club.</p>
+  <p class="sub">Kids build something, then stand up and pitch it. Start free today.</p>
 
+  <div class="cta">
+    <a class="btn primary" href="https://gpskids.app">🎤 Practice free<small>The speaking coach app at https://gpskids.app</small></a>
+    <a class="btn secondary" href="https://gpskids.app/pitch">🏆 Free Kids Pitch Night<small>Sign up at https://gpskids.app/pitch</small></a>
+  </div>
+
+  <div class="info">
+    <p><b>Kids Pitch Night is free.</b> Sign up, then record a 1-minute pitch by <b>Sun, Nov 1</b>. The top 12 pitch live at our HQ on <b>Sat, Nov 7, 2 to 4 PM</b>.</p>
+    <p><b>In-person club:</b> Tue and Thu, 6 to 7 PM, at GPS Kids HQ, 1740 Grassland Pkwy, Unit 202, Alpharetta, GA.</p>
+  </div>
+
+  <h2>Watch</h2>
+  <div class="watch">
+    <figure>
+      <video controls playsinline preload="none" poster="/watch/bedtime-pitch.jpg" aria-label="Cartoon: the bedtime pitch">
+        <source src="/watch/bedtime-pitch.mp4" type="video/mp4">
+      </video>
+      <figcaption>The bedtime pitch 😂🌙</figcaption>
+    </figure>
+    <figure>
+      <video controls playsinline preload="none" poster="/watch/puppy-pitch.jpg" aria-label="Cartoon: the puppy pitch">
+        <source src="/watch/puppy-pitch.mp4" type="video/mp4">
+      </video>
+      <figcaption>The puppy pitch 😂🐶</figcaption>
+    </figure>
+  </div>
+  <a class="ig" href="https://www.instagram.com/gpskids.hq/">More on Instagram: @gpskids.hq &rarr;</a>
+
+  <h2>For parents and coaches</h2>
   <a class="card" href="/parents">
     <div class="t">🎮 For Parents</div>
-    <div class="d">A 5-minute dinner-table speaking game for every family — plus the 30-second tip that turns "how was your day" into storytelling.</div>
+    <div class="d">A 5-minute dinner-table speaking game for every family, plus the 30-second tip that turns "how was your day" into storytelling.</div>
   </a>
 
   <a class="card" href="/curriculum">
     <div class="t">📚 The Curriculum</div>
-    <div class="d">The full GPS Kids program: weekly missions, the confidence ladder, and how kids go from shy to standout — one brave rep at a time.</div>
+    <div class="d">The full GPS Kids program: weekly missions, the confidence ladder, and how kids go from shy to standout, one brave rep at a time.</div>
   </a>
 
   <a class="card" href="/class-plan">
     <div class="t">📋 Tonight's Class Plan</div>
-    <div class="d">The coach's run-sheet for this week's session — timing, games, build block, pitches, and the pledge.</div>
+    <div class="d">The coach's run-sheet for this week's session: timing, games, build block, pitches, and the pledge.</div>
   </a>
 
   <a class="card" href="/itinerary">
     <div class="t">🗓️ Weekly Class Itinerary</div>
-    <div class="d">The evergreen 60-minute run-sheet every GPS Kids class follows — the vibe rules, the rituals, the pledge.</div>
+    <div class="d">The evergreen 60-minute run-sheet every GPS Kids class follows: the vibe rules, the rituals, the pledge.</div>
   </a>
 
-  <footer>GPS Kids · Alpharetta, GA · <a href="https://chat.joingpskids.com">Join the free parents' community</a></footer>
+  <a class="card" href="https://chat.joingpskids.com">
+    <div class="t">💬 Parents' Community</div>
+    <div class="d">Join the free parents' community. Swap tips, ask questions, and hear about new events first.</div>
+  </a>
+
+  <footer>GPS Kids · Alpharetta, GA<br><a href="https://chat.joingpskids.com">Join the free parents' community</a> · <a href="https://www.instagram.com/gpskids.hq/">Instagram</a></footer>
 </div>
 </body>
 </html>
